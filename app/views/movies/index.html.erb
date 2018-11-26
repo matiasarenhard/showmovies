@@ -16,13 +16,13 @@
   <tbody>
     <% @movies.each do |movie| %>
       <tr>
-        <td><%= movie.name %></td>
-        <td><%= movie.url %></td>
-        <td><%= movie.user %></td>
-        <td><%= movie.public %></td>
-        <td><%= link_to 'Show', movie %></td>
-        <td><%= link_to 'Edit', edit_movie_path(movie) %></td>
-        <td><%= link_to 'Destroy', movie, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <video id=example-video width=960 height=540 class="video-js vjs-default-skin" controls>
+  <source
+     src= "<%= movie.url %>"
+     type="application/x-mpegURL">
+</video>
+
+        
       </tr>
     <% end %>
   </tbody>
@@ -31,3 +31,8 @@
 <br>
 
 <%= link_to 'New Movie', new_movie_path %>
+<script>
+
+  var player = videojs('example-video');
+  player.play();
+</script>
