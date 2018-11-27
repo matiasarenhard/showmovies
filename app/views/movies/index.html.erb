@@ -1,46 +1,45 @@
 <p id="notice"><%= notice %></p>
-
 <h1 class="text-center"> My Movies</h1>
 <%= link_to 'New Movie', new_movie_path, class: 'btn btn-success text-center' %>
 <br/>
 <br/>
 <table id="myMovies">
-  <thead>
-    <tr>
-      <th>Id</th>
-      <th>Movie</th>
-      <th>Options</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @movies.each do |movie| %>
+   <thead>
       <tr>
-          <td class="hide"> <%= movie.name + movie.id.to_s %><td>
-          <td>
-                <%= movie.name %><br>
-                <video id="video-<%=movie.id.to_s %>" width=960 height=540 class="video-js vjs-default-skin" controls> <source src= "<%= movie.url %>" type="application/x-mpegURL"> </video>
-                <hr style="border-top-width: 5px; background-color: black;">
-          </td>
-          <td>
-            <%= link_to "edit", movie_path(movie), class: 'btn btn-warning' %>
-          </td>
+         <th class="hidethis">Id</th>
+         <th>Movie</th>
+         <th>Options</th>
       </tr>
-      
-    <% end %>
-
-  </tbody>
+   </thead>
+   <tbody>
+      <% @movies.each do |movie| %>
+      <tr>
+         <td class="hidethis"> <%= movie.name + movie.id.to_s %>
+         <td>
+         <td>
+            <%= movie.name %><br>
+            <video id="video-<%=movie.id.to_s %>" width=960 height=540 class="video-js vjs-default-skin" controls>
+               <source src= "<%= movie.url %>" type="application/x-mpegURL">
+            </video>
+            <hr style="border-top-width: 5px; background-color: black;">
+         </td>
+         <td>
+            <%= link_to "edit", movie_path(movie), class: 'btn btn-warning' %>
+         </td>
+      </tr>
+      <% end %>
+   </tbody>
 </table>
-
 <br>
 <script>
-  $(document).ready(function() {
-     $(".video-js").each(function(){
-       var movie_id = $(this)[0].id
-       var concat = "#"+movie_id.toString()
-       videojs(concat);
-     }); 
-  });
-
-  
+   $(document).ready(function() {
+      $(".video-js").each(function(){
+        var movie_id = $(this)[0].id
+        var concat = "#"+movie_id.toString()
+        videojs(concat);
+      }); 
+      $('.hidethis').hide();
+   });
+   
+   
 </script>

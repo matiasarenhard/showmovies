@@ -3,11 +3,11 @@ class MoviesController < ApplicationController
   before_action :set_movie, only: [:show, :edit, :update, :destroy]
 
   def index
-    @movies = Movie.all
+    @movies = Movie.where(user_id: current_user.id, public: false)
   end
 
   def public 
-    @movies = Movie.all
+    @movies = Movie.where(public: true)
   end  
 
   def show
