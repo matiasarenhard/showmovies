@@ -1,8 +1,8 @@
 FactoryBot.define do
   factory :movie do
-    name { "MyString" }
+    name { "teste" }
     url { "MyString" }
-    user { nil }
+    user { create(:user) }
     public { false }
   end
 end

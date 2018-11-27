@@ -1,24 +1,12 @@
-# README
+# Build
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+    ```
+        bundle install
+        rake db:create
+        rake db:migrate
+        rake db:seed
+        localhost:3000
+    ```
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+# Link
+https://tranquil-atoll-28605.herokuapp.com/users/sign_in  
