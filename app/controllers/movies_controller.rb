@@ -6,6 +6,10 @@ class MoviesController < ApplicationController
     @movies = Movie.all
   end
 
+  def public 
+    @movies = Movie.all
+  end  
+
   def show
   end
 
@@ -22,7 +26,7 @@ class MoviesController < ApplicationController
     respond_to do |format|
       if @movie.save
         format.html { redirect_to @movie, notice: 'Movie was successfully created.' }
-        format.json { render :show, status: :created, location: @movie }
+        format.json { render :index }
       else
         format.html { render :new }
         format.json { render json: @movie.errors, status: :unprocessable_entity }
@@ -34,7 +38,7 @@ class MoviesController < ApplicationController
     respond_to do |format|
       if @movie.update(movie_params)
         format.html { redirect_to @movie, notice: 'Movie was successfully updated.' }
-        format.json { render :show, status: :ok, location: @movie }
+        format.json { render :index }
       else
         format.html { render :edit }
         format.json { render json: @movie.errors, status: :unprocessable_entity }

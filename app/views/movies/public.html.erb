@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<h1 class="text-center">Public Movies</h1>
+<%= link_to 'New Movie', new_movie_path, class: 'btn btn-success text-center' %>
+<br/>
+<br/>
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @movies.each do |movie| %>
+      <tr>
+        <td>
+        <%= movie.user.email %>
+        </td>
+        <td>
+            <%= movie.name %><br>
+            <video id=example-video width=960 height=540 class="video-js vjs-default-skin" controls> <source src= "<%= movie.url %>" type="application/x-mpegURL"> </video>
+            <hr style="border-top-width: 10px; background-color: black;">
+        </td>
+      </tr>
+      
+    <% end %>
+
+  </tbody>
+</table>
+
+<br>
+<script>
+
+  var player = videojs('example-video');
+  player.play();
+</script>
