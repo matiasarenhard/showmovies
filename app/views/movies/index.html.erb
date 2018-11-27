@@ -1,36 +1,32 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Movies</h1>
-
+<h1 class="text-center">Movies</h1>
+<%= link_to 'New Movie', new_movie_path, class: 'btn btn-success text-center' %>
+<br/>
+<br/>
 <table>
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Url</th>
-      <th>User</th>
-      <th>Public</th>
-      <th colspan="3"></th>
+      <th>Movie</th>
     </tr>
   </thead>
 
   <tbody>
     <% @movies.each do |movie| %>
       <tr>
-      <video id=example-video width=960 height=540 class="video-js vjs-default-skin" controls>
-  <source
-     src= "<%= movie.url %>"
-     type="application/x-mpegURL">
-</video>
-
-        
+      <td>
+          <%= movie.name %><br>
+          <video id=example-video width=960 height=540 class="video-js vjs-default-skin" controls> <source src= "<%= movie.url %>" type="application/x-mpegURL"> </video>
+          <hr style="border-top-width: 10px; background-color: black;">
+      </td>
       </tr>
+      
     <% end %>
+
   </tbody>
 </table>
 
 <br>
-
-<%= link_to 'New Movie', new_movie_path %>
 <script>
 
   var player = videojs('example-video');
